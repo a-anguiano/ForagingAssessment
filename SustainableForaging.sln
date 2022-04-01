@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31205.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SustainableForaging.UI", "SustainableForaging.UI\SustainableForaging.UI.csproj", "{EDC4932C-925A-4590-B518-3F13436847E3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SustainableForaging.Core", "SustainableForaging.Core\SustainableForaging.Core.csproj", "{778A3438-67FC-4397-B04E-8CF4B7F898DC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SustainableForaging.DAL", "SustainableForaging.DAL\SustainableForaging.DAL.csproj", "{D3EF6AEE-8155-4E92-96A2-84CAEE13223B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SustainableForaging.DAL.Tests", "SustainableForaging.DAL.Tests\SustainableForaging.DAL.Tests.csproj", "{B3EBE2A8-86DA-48E6-8621-064110AD7AD6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SustainableForaging.BLL", "SustainableForaging.BLL\SustainableForaging.BLL.csproj", "{98E67444-8414-4FED-87CF-26C8357D2C50}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SustainableForaging.BLL.Tests", "SustainableForaging.BLL.Tests\SustainableForaging.BLL.Tests.csproj", "{87FA1672-7D46-4DF3-B44B-733C482007DA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EDC4932C-925A-4590-B518-3F13436847E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDC4932C-925A-4590-B518-3F13436847E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDC4932C-925A-4590-B518-3F13436847E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDC4932C-925A-4590-B518-3F13436847E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{778A3438-67FC-4397-B04E-8CF4B7F898DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{778A3438-67FC-4397-B04E-8CF4B7F898DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{778A3438-67FC-4397-B04E-8CF4B7F898DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{778A3438-67FC-4397-B04E-8CF4B7F898DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3EF6AEE-8155-4E92-96A2-84CAEE13223B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3EF6AEE-8155-4E92-96A2-84CAEE13223B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3EF6AEE-8155-4E92-96A2-84CAEE13223B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3EF6AEE-8155-4E92-96A2-84CAEE13223B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3EBE2A8-86DA-48E6-8621-064110AD7AD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3EBE2A8-86DA-48E6-8621-064110AD7AD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3EBE2A8-86DA-48E6-8621-064110AD7AD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3EBE2A8-86DA-48E6-8621-064110AD7AD6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98E67444-8414-4FED-87CF-26C8357D2C50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98E67444-8414-4FED-87CF-26C8357D2C50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98E67444-8414-4FED-87CF-26C8357D2C50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98E67444-8414-4FED-87CF-26C8357D2C50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87FA1672-7D46-4DF3-B44B-733C482007DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87FA1672-7D46-4DF3-B44B-733C482007DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87FA1672-7D46-4DF3-B44B-733C482007DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87FA1672-7D46-4DF3-B44B-733C482007DA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4B0F71CF-AA66-44DB-8F6F-229E25439C5E}
+	EndGlobalSection
+EndGlobal

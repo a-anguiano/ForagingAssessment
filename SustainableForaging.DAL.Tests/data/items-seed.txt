@@ -1,0 +1,27 @@
+id,name,category,dollars/kilogram
+1,Ramps,EDIBLE,5.00
+2,Purslane,EDIBLE,2.95
+3,Cattail,EDIBLE,4.99
+4,Chicory,EDIBLE,1.99
+5,Field Garlic,EDIBLE,2.99
+6,Papaw,EDIBLE,9.99
+7,Blackberry,EDIBLE,6.25
+8,Chicken of the Woods Mushroom,EDIBLE,14.95
+9,Chanterelle,EDIBLE,15.00
+10,Nettle,EDIBLE,2.89
+11,Dandelion,EDIBLE,0.05
+12,Hazelnut,EDIBLE,8.85
+13,Echinacea,MEDICINAL,7.50
+14,Mugwort,MEDICINAL,3.50
+15,St. John's Wort,MEDICINAL,4.75
+16,Ganoderma applanatum,MEDICINAL,0.95
+17,Osage Orange,MEDICINAL,2.95
+18,Jewelweed,MEDICINAL,1.65
+19,Firethorn,INEDIBLE,0.0
+20,Turkey Tail Mushroom,INEDIBLE,0.0
+21,Duckweed,INEDIBLE,0.0
+22,Sweet Gum,INEDIBLE,0.0
+23,Dogbane,POISONOUS,0.0
+24,Jet Berry,POISONOUS,0.0
+25,False Hellebore,POISONOUS,0.0
+26,Fibercaps,POISONOUS,0.0

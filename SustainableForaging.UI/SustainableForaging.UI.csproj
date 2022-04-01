@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+    <StartupObject>SustainableForaging.UI.Program</StartupObject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SustainableForaging.BLL\SustainableForaging.BLL.csproj" />
+    <ProjectReference Include="..\SustainableForaging.Core\SustainableForaging.Core.csproj" />
+    <ProjectReference Include="..\SustainableForaging.DAL\SustainableForaging.DAL.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="data\forage_data\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Ninject" Version="3.3.4" />
+  </ItemGroup>
+
+</Project>
