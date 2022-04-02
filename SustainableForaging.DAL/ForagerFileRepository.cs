@@ -20,6 +20,22 @@ namespace SustainableForaging.DAL
             this.filePath = filePath;
         }
 
+        public Forager Add(Forager forager)
+        {
+
+            if (forager == null)
+            {
+                return null;
+            }
+
+            List<Forager> all = FindByState(forager.State);  //hmmm
+            forager.Id = Guid.NewGuid().ToString();
+            all.Add(forager);
+            Write(all);  //, string state   , forager.State
+            return forager;
+
+        }
+
         public List<Forager> FindAll()
         {
             var foragers = new List<Forager>();
@@ -48,32 +64,7 @@ namespace SustainableForaging.DAL
                 }
             }
             return foragers;
-        }
-
-        public Forager Add(Forager forager)
-        {
-
-            if (forager == null)
-            {
-                return null;
-            }
-
-            List<Forager> all = FindAll();
-
-            //int nextId = (all.Count == 0 ? 0 : all.Max(i => i.Id)) + 1;
-
-            forager.Id = Guid.NewGuid().ToString();
-
-            all.Add(forager);
-            Write(all);
-
-            return forager;
-            //List<Forager> all = FindById(forager.Id);  //hmmm
-            //forager.Id = Guid.NewGuid().ToString();
-            //all.Add(forager);
-            //Write(all, forager.Id); //may need to add Write, ForageFileRepo
-            //return forager;
-        }
+        }      
 
         public Forager FindById(string id)
         {
