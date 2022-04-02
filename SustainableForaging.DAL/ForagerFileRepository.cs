@@ -14,7 +14,7 @@ namespace SustainableForaging.DAL
         private readonly string filePath;
 
         //directory or filepath
-
+        //try - catch
         public ForagerFileRepository(string filePath)
         {
             this.filePath = filePath;
@@ -22,18 +22,16 @@ namespace SustainableForaging.DAL
 
         public Forager Add(Forager forager)
         {
-
             if (forager == null)
             {
                 return null;
             }
 
-            List<Forager> all = FindByState(forager.State);  //hmmm
+            List<Forager> all = FindAll();    //FindByState(forager.State);  //hmmm
             forager.Id = Guid.NewGuid().ToString();
             all.Add(forager);
             Write(all);  //, string state   , forager.State
             return forager;
-
         }
 
         public List<Forager> FindAll()

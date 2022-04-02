@@ -11,11 +11,9 @@ namespace SustainableForaging.DAL.Tests
         //string dir = Directory.GetCurrentDirectory();
         //const string SEED_PATH = @"data\foragers.csv";
         //const string TEST_PATH = @"data\foragers.csv";  //"../../../data/foragers.csv"
-                                                        //FileSystem.CopyFile(String sourceFullPath, String destFullPath, Boolean overwrite)
-                                                        // File.Copy(String sourceFileName, String destFileName, Boolean overwrite)
-
-        //const int NEXT_COUNT = 1001;
-        //why don't we delete?
+        //                                                //FileSystem.CopyFile(String sourceFullPath, String destFullPath, Boolean overwrite)
+        //                                                // File.Copy(String sourceFileName, String destFileName, Boolean overwrite)
+        //                                                //why don't we delete?
 
 
         //ForagerFileRepository repository = new ForagerFileRepository(TEST_PATH);
@@ -26,7 +24,6 @@ namespace SustainableForaging.DAL.Tests
         //    File.Copy(SEED_PATH, TEST_PATH, true);
         //}
 
-        //try - catch
         [Test]
         public void ShouldFindAll()
         {
@@ -58,8 +55,8 @@ namespace SustainableForaging.DAL.Tests
 
             Forager actual = repo.Add(forager);
 
-            //where does 36 come from?
-            Assert.AreEqual(36, actual.Id.Length);    //36
+            //36 is length of GUID generated id
+            Assert.AreEqual(36, actual.Id.Length);    
         }
 
         [Test]
@@ -71,7 +68,7 @@ namespace SustainableForaging.DAL.Tests
 
             ForagerFileRepository repository = new ForagerFileRepository(path);
             Forager forager = MakeForagerRick();
-            forager = repository.Add(forager);
+            forager = repository.Add(forager);  //may not need to assign variable
 
             //Assert.AreEqual("AAAA-1111-2222-FFFF", forager.Id);
             Assert.AreEqual(1, repository.FindAll().Count); //

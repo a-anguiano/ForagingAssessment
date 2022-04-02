@@ -94,13 +94,22 @@ namespace SustainableForaging.BLL
             if(!result.Success)
             {
                 return result;
-            }
+            }            
 
             ValidateChildrenExist(forage, result);
-
+            //if(!result.Success)
+            //{
             return result;
-        }
+            //}
 
+            //ValidateDuplicate(forage, result)
+            //return result
+        }
+        private void ValidateComboOfDateItemForagerIsNotDuplicate() //Forage forage, Result<Forage> result
+        {
+            //forage.Forager.Id
+            //Any
+        }
         private Result<Forage> ValidateNulls(Forage forage)
         {
             var result = new Result<Forage>();
@@ -151,5 +160,6 @@ namespace SustainableForaging.BLL
                 result.AddMessage("Item does not exist.");
             }
         }
+        
     }
 }
