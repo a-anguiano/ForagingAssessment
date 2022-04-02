@@ -9,8 +9,8 @@ namespace SustainableForaging.DAL.Tests
     public class ForagerFileRepositoryTest
     {
         //string dir = Directory.GetCurrentDirectory();
-        const string SEED_PATH = @"data\foragers.csv";
-        const string TEST_PATH = @"data\foragers.csv";  //"../../../data/foragers.csv"
+        //const string SEED_PATH = @"data\foragers.csv";
+        //const string TEST_PATH = @"data\foragers.csv";  //"../../../data/foragers.csv"
                                                         //FileSystem.CopyFile(String sourceFullPath, String destFullPath, Boolean overwrite)
                                                         // File.Copy(String sourceFileName, String destFileName, Boolean overwrite)
 
@@ -37,42 +37,45 @@ namespace SustainableForaging.DAL.Tests
 
         //FindByState
 
-        //[Test]
-        //public void ShouldFindJasmin()
-        //{
-        //    //cda52d73-fa62-465b-ba64-189a9f356938,Jasmin,Common,CT
+        [Test]
+        public void ShouldFindJasmin()
+        {
+            //cda52d73-fa62-465b-ba64-189a9f356938,Jasmin,Common,CT
 
-        //    Forager jasmin = repository.FindById("cda52d73-fa62-465b-ba64-189a9f356938");
-        //    Assert.NotNull(jasmin);
-        //    Assert.AreEqual("Jasmin", jasmin.FirstName);
-        //    Assert.AreEqual("Common", jasmin.LastName);
-        //    Assert.AreEqual("CT", jasmin.State);
-        //}
+            ForagerFileRepository repo = new ForagerFileRepository(@"data\foragers.csv");
+            Forager jasmin = repo.FindById("cda52d73-fa62-465b-ba64-189a9f356938");
+            Assert.NotNull(jasmin);
+            Assert.AreEqual("Jasmin", jasmin.FirstName);
+            Assert.AreEqual("Common", jasmin.LastName);
+            Assert.AreEqual("CT", jasmin.State);
+        }
 
-        //[Test]
-        //public void ShouldAdd()
-        //{
-        //    Forager forager = MakeForagerRick();
+        [Test]
+        public void ShouldAdd()
+        {
+            ForagerFileRepository repo = new ForagerFileRepository(@"data\foragers.csv");
+            Forager forager = MakeForagerRick();
 
-        //    Forager actual = repository.Add(forager);
+            Forager actual = repo.Add(forager);
 
-        //    Assert.AreEqual(1001, actual.Id.Length);
-        //}
+            //where does 36 come from?
+            Assert.AreEqual(36, actual.Id.Length);    //36
+        }
 
-        //[Test]
-        //public void ShouldCreateNewFile()
-        //{
-        //    string path = @"data\foragers.csv";
-        //    FileInfo file = new FileInfo(path);
-        //    file.Delete();
+        [Test]
+        public void ShouldCreateNewFile()
+        {
+            string path = @"data\foragers.csv";
+            FileInfo file = new FileInfo(path);
+            file.Delete();
 
-        //    ForagerFileRepository repository = new ForagerFileRepository(path);
-        //    Forager forager = MakeForagerRick();
-        //    forager = repository.Add(forager);
+            ForagerFileRepository repository = new ForagerFileRepository(path);
+            Forager forager = MakeForagerRick();
+            forager = repository.Add(forager);
 
-        //    Assert.AreEqual(1, forager.Id);
-        //    Assert.AreEqual(1, repository.FindAll().Count);
-        //}
+            //Assert.AreEqual("AAAA-1111-2222-FFFF", forager.Id);
+            Assert.AreEqual(1, repository.FindAll().Count); //
+        }
 
         private Forager MakeForagerRick()
         {
