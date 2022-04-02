@@ -21,6 +21,14 @@ namespace SustainableForaging.BLL.Tests.TestDoubles
             return foragers;
         }
 
+        public Forager Add(Forager forager)
+        {
+            List<Forager> all = FindAll();
+            forager.Id = all.Max(i => i.Id) + 1;
+            all.Add(forager);
+            return forager;
+        }
+
         public Forager FindById(string id)
         {
             return foragers.FirstOrDefault(i => i.Id == id);

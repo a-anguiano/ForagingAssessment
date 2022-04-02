@@ -1,4 +1,6 @@
-﻿namespace SustainableForaging.Core.Models
+﻿using System;
+
+namespace SustainableForaging.Core.Models
 {
     public class Forager
     {
@@ -26,9 +28,9 @@
                    State == forager.State;
         }
 
-        //public override int GetHashCode()
-        //{
-        //    return HashCode.Combine(Id, FirstName, LastName, State);
-        //}
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Id, FirstName, LastName, State);
+        }
     }
 }

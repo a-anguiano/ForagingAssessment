@@ -15,9 +15,6 @@ namespace SustainableForaging.BLL
             this.repository = repository;
         }
 
-        //NEED TO BE ABLE TO ADD A FORAGER
-            //GUID
-
         public List<Forager> FindByState(string stateAbbr)
         {
             return repository.FindByState(stateAbbr);
@@ -30,6 +27,9 @@ namespace SustainableForaging.BLL
                     .ToList();
         }
 
+
+        //NEED TO BE ABLE TO ADD A FORAGER
+        //GUID
         public Result<Forager> Add(Forager forager)
         {
             var result = new Result<Forager>();

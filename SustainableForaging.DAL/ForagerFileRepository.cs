@@ -10,7 +10,10 @@ namespace SustainableForaging.DAL
 {
     public class ForagerFileRepository : IForagerRepository
     {
+        private const string HEADER = "id,firstname,lastname,state";
         private readonly string filePath;
+
+        //directory or filepath
 
         public ForagerFileRepository(string filePath)
         {
@@ -47,6 +50,31 @@ namespace SustainableForaging.DAL
             return foragers;
         }
 
+        public Forager Add(Forager forager)
+        {
+
+            if (forager == null)
+            {
+                return null;
+            }
+
+            List<Forager> all = FindAll();
+
+            //int nextId = (all.Count == 0 ? 0 : all.Max(i => i.Id)) + 1;
+
+            forager.Id = Guid.NewGuid().ToString();
+
+            all.Add(forager);
+            Write(all);
+
+            return forager;
+            //List<Forager> all = FindById(forager.Id);  //hmmm
+            //forager.Id = Guid.NewGuid().ToString();
+            //all.Add(forager);
+            //Write(all, forager.Id); //may need to add Write, ForageFileRepo
+            //return forager;
+        }
+
         public Forager FindById(string id)
         {
             return FindAll().FirstOrDefault(i => i.Id == id);
@@ -57,6 +85,15 @@ namespace SustainableForaging.DAL
             return FindAll()
                 .Where(i => i.State == stateAbbr)
                 .ToList();
+        }
+
+        private string Serialize(Forager forager)
+        {
+            return string.Format("{0},{1},{2},{3}",
+                    forager.Id,
+                    forager.FirstName,
+                    forager.LastName,
+                    forager.State);
         }
 
         private Forager Deserialize(string[] fields)
@@ -72,6 +109,28 @@ namespace SustainableForaging.DAL
             result.LastName = fields[2];
             result.State = fields[3];
             return result;
+        }
+        private void Write(List<Forager> foragers)
+        {
+            try
+            {
+                using StreamWriter writer = new StreamWriter(filePath);
+                writer.WriteLine(HEADER);
+
+                if (foragers == null)
+                {
+                    return;
+                }
+
+                foreach (var forager in foragers)
+                {
+                    writer.WriteLine(Serialize(forager));
+                }
+            }
+            catch (IOException ex)
+            {
+                throw new RepositoryException("could not write foragers", ex);
+            }
         }
     }
 }

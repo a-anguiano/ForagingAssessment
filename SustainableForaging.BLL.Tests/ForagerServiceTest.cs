@@ -66,6 +66,14 @@ namespace SustainableForaging.BLL.Tests
         }
 
         //The combination of first name, last name, and state cannot be duplicated.
+        [Test]
+        public void ShouldNotSaveDuplicateCombo()
+        {
+            Forager forager = new Forager("0e4707f4-407e-4ec9-9665-baca0aabe88c",
+                "Jilly", "Sisse", "GA");
+            Result<Forager> result = service.Add(forager);
+            Assert.IsFalse(result.Success);
+        }
 
         //Forager ID is a GUID
     }
