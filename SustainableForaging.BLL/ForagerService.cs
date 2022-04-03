@@ -27,9 +27,6 @@ namespace SustainableForaging.BLL
                     .ToList();
         }
 
-
-        //NEED TO BE ABLE TO ADD A FORAGER
-        //GUID
         public Result<Forager> Add(Forager forager)
         {
             var result = new Result<Forager>();
