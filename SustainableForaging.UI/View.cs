@@ -90,6 +90,14 @@ namespace SustainableForaging.UI
             return categories[io.ReadInt(message, 1, index) - 1];
         }
 
+        //List State Abbreviations?, validate they entered a proper stateabb
+        public string GetForagerState()
+        {
+            DisplayHeader("Forager States");
+            return io.ReadRequiredString("Enter the Forager's State Abbreviation: ");
+
+        }
+
         public Item ChooseItem(List<Item> items)
         {
             DisplayItems(items);
@@ -229,6 +237,21 @@ namespace SustainableForaging.UI
             foreach(Item item in items)
             {
                 io.PrintLine($"{item.Id}: {item.Name}, {item.Category}, {item.DollarsPerKilogram:0.00} $/kg");
+            }
+        }
+
+        //DISPLAYFORAGERS
+        public void DisplayForagers(List<Forager> foragers)
+        {
+            if (foragers == null || foragers.Count == 0)
+            {
+                io.PrintLine("No foragers found.");
+                return;
+            }
+
+            foreach(Forager forager in foragers)
+            {
+                io.PrintLine($"{forager.FirstName} {forager.LastName} in {forager.State}");
             }
         }
     }
