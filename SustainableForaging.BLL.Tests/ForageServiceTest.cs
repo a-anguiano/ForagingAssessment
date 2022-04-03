@@ -60,5 +60,24 @@ namespace SustainableForaging.BLL.Tests
             Result<Forage> result = service.Add(forage);
             Assert.IsFalse(result.Success);
         }
+
+        [Test]
+        public void ShouldNotAddWhenComboIsDuplicate()
+        {
+            Forage forage = new Forage();
+            forage.Date = DateTime.Today;
+            forage.Forager = ForagerRepositoryDouble.FORAGER;
+            forage.Item = ItemRepositoryDouble.ITEM;
+            forage.Kilograms = 0.5M;
+            service.Add(forage);
+
+            Forage forageDuplicate = new Forage();
+            forageDuplicate.Date = DateTime.Today;
+            forageDuplicate.Forager = ForagerRepositoryDouble.FORAGER;
+            forageDuplicate.Item = ItemRepositoryDouble.ITEM;
+            forageDuplicate.Kilograms = 0.5M;
+            Result<Forage> result = service.Add(forageDuplicate);
+            Assert.IsFalse(result.Success);
+        }
     }
 }

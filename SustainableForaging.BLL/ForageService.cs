@@ -97,18 +97,25 @@ namespace SustainableForaging.BLL
             }            
 
             ValidateChildrenExist(forage, result);
-            //if(!result.Success)
-            //{
-            return result;
-            //}
+            if (!result.Success)
+            {
+                return result;
+            }
 
-            //ValidateDuplicate(forage, result)
-            //return result
+            ValidateComboOfDateItemForagerIsNotDuplicate(forage, result);
+            if (!result.Success)
+            {
+                return result;
+            }
+            return result;
         }
-        private void ValidateComboOfDateItemForagerIsNotDuplicate() //Forage forage, Result<Forage> result
+        private void ValidateComboOfDateItemForagerIsNotDuplicate(Forage forage, Result<Forage> result) //Forage forage, Result<Forage> result
         {
-            //forage.Forager.Id
-            //Any
+            List<Forage> forages = forageRepository.FindByDate(forage.Date);
+            if (forages.Any(f => f.Date == forage.Date && f.Item == forage.Item && f.Forager == forage.Forager))
+            {
+                result.AddMessage("Cannot enter a duplicate combination of Date/Item/Forager.");
+            }
         }
         private Result<Forage> ValidateNulls(Forage forage)
         {
