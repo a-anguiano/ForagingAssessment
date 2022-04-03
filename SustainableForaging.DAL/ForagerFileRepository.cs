@@ -13,7 +13,6 @@ namespace SustainableForaging.DAL
         private const string HEADER = "id,firstname,lastname,state";
         private readonly string filePath;
 
-        //directory or filepath
         //try - catch
         public ForagerFileRepository(string filePath)
         {
@@ -27,10 +26,10 @@ namespace SustainableForaging.DAL
                 return null;
             }
 
-            List<Forager> all = FindAll();    //FindByState(forager.State);  //hmmm
+            List<Forager> all = FindAll();    
             forager.Id = Guid.NewGuid().ToString();
             all.Add(forager);
-            Write(all);  //, string state   , forager.State
+            Write(all);  
             return forager;
         }
 
