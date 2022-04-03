@@ -48,6 +48,14 @@ namespace SustainableForaging.BLL
 
             return result;
         }
+        public IEnumerable<IGrouping<Category, Forage>> GetItemKgStatReport(DateTime date)
+        {
+            List<Forage> forages = forageRepository.FindByDate(date);
+            var stats = forages.Where(f => f.Date == date).OrderBy(f => f.Item.Category)
+                .ThenBy(f => f.Item.Name)
+                .GroupBy(f => f.Item.Category);
+            return stats;
+        }
 
         public int Generate(DateTime start, DateTime end, int count)
         {
