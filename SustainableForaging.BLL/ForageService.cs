@@ -49,22 +49,20 @@ namespace SustainableForaging.BLL
             return result;
         }
         //IEnumerable<IGrouping<Category, Forage>>
-        public List<KgPerItem> GetItemKgStatReport(DateTime date)
+        public IEnumerable<IGrouping<Category, Forage>> GetItemKgStatReport(DateTime date)  //List<KgPerItem>
         {
             List<Forage> forages = forageRepository.FindByDate(date);
 
-            //may not need the Where because already found forages by date
-            //.Where(f => f.Date == date)
             KgPerItem kgPerItem = new KgPerItem();
             List<KgPerItem> result = new List<KgPerItem>();
 
-            var itemsKg = forages.Aggregate(new List<Forage>(),
-                (current, forage) => current.Concat(forage.Item.Name).ToList());
+            //var itemsKg = forages.Aggregate(new List<Forage>(),
+            //    (current, forage) => current.Concat(forage.Item.Name).ToList());
 
-            var stats = new KgPerItem
-            {
-                ItemName = itemsKg.
-            };
+            //var stats = new KgPerItem
+            //{
+            //    ItemName = itemsKg.
+            //};
             //foreach(var forage in forages)
             //{
             //    kgPerItem.Item = forage.Item.Name;
@@ -72,9 +70,9 @@ namespace SustainableForaging.BLL
             //}
 
 
-            //var byCategory = forages.OrderBy(f => f.Item.Category)
-            //    .ThenBy(f => f.Item.Name)
-            //    .GroupBy(f => f.Item.Category);
+            var byCategory = forages.OrderBy(f => f.Item.Category)
+                .ThenBy(f => f.Item.Name)
+                .GroupBy(f => f.Item.Category);
 
             //sum equivalent items?
 

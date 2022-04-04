@@ -12,46 +12,8 @@ namespace SustainableForaging.BLL.Tests
            new ForageRepositoryDouble(),
            new ForagerRepositoryDouble(),
            new ItemRepositoryDouble());
-        
-        public DateTime Date { get; set; }
-        public Forager Forager { get; private set; }
-        public Item Item { get; private set; }
-        public decimal Kilograms { get; private set; }
 
-        //private ForageService _service;
-
-        [SetUp]
-        public void SetUp()
-        {            
-            var forages = new List<Forage>
-            {
-                new()
-                {
-                    Date = DateTime.Today,
-                    Forager = ForagerRepositoryDouble.FORAGER,
-                    Item = ItemRepositoryDouble.ITEM,
-                    Kilograms = 0.5M
-                },
-
-                new ()
-                {
-                    Date = DateTime.Today,
-                    Forager = ForagerRepositoryDouble.FORAGER2,
-                    Item = ItemRepositoryDouble.ITEM,
-                    Kilograms = 0.2M
-                },
-                new ()
-                {
-                    Date = DateTime.Today,
-                    Forager = ForagerRepositoryDouble.FORAGER3,
-                    Item = ItemRepositoryDouble.ITEM,
-                    Kilograms = 0.5M
-
-                }
-            };
-            service = new ForageService(forages);
-
-        }//total kg is 12
+        //total kg = 1.2M
 
         [Test]
         public void ShouldAdd()
@@ -124,8 +86,33 @@ namespace SustainableForaging.BLL.Tests
         [Test]
         public void GetKgOfEachItemInADay()
         {
+            DateTime date = DateTime.Today;
 
-            service.GetItemKgStatReport();
+            Category[] expectedItemCategory = new Category[3] {Category.Edible, Category.Edible, Category.Edible};
+            string[] expectedItemName = new string[3] { "Chanterelle", "Chanterelle", "Chanterelle" };
+            decimal[] expectedKg = new decimal[3] {0.5M, 0.2M, 0.5M};
+
+            Category[] actualCategory = new Category[3];
+            string[] actualItemName = new string[3];
+            decimal[] actualKg = new decimal[3];
+
+            var byCategory = service.GetItemKgStatReport(date);
+
+
+            for (int i = 0; i < 3; i++)
+            {
+                actualCategory = byCategory;
+
+                foreach (var item in itemGroup)
+                {
+                    actualItemName = item.Item.Name;
+                    actualKg = item.Kilograms;
+                }
+            }
+
+            Assert.AreEqual(expectedItemCategory, itemCategory);
+            Assert.AreEqual(expectedItemName, itemName);
+
         }
     }
 }

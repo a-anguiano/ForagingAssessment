@@ -9,6 +9,7 @@ namespace SustainableForaging.BLL.Tests.TestDoubles
     public class ForagerRepositoryDouble : IForagerRepository
     {
         public readonly static Forager FORAGER = MakeForager();
+        public readonly static Forager FORAGER1 = MakeForager1();
         public readonly static Forager FORAGER2 = MakeForager2();
         public readonly static Forager FORAGER3 = MakeForager3();
 
@@ -53,6 +54,15 @@ namespace SustainableForaging.BLL.Tests.TestDoubles
             return forager;
         }
 
+        private static Forager MakeForager1()
+        {
+            Forager forager = new Forager();
+            forager.Id = "0e4707f4-407e-4ec9-9665-baca0aabe88f";
+            forager.FirstName = "Lazy";
+            forager.LastName = "Dog";
+            forager.State = "TX";
+            return forager;
+        }
         private static Forager MakeForager2()
         {
             Forager forager = new Forager();
