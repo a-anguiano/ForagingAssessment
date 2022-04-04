@@ -62,8 +62,8 @@ namespace SustainableForaging.UI
                         AddItem();
                         break;
                     case MainMenuOption.ReportKgPerItem:    
-                        GetReportKgPerItem();
-                        //view.DisplayStatus(false, "NOT IMPLEMENTED");
+                        //GetReportKgPerItem();
+                        view.DisplayStatus(false, "NOT IMPLEMENTED");
                         view.EnterToContinue();
                         break;
                     case MainMenuOption.ReportCategoryValue:
@@ -165,30 +165,31 @@ namespace SustainableForaging.UI
         }
 
         //REPORT1
-        private void GetReportKgPerItem()   //Result<ItemKgStatReport>
-        {
-            var date = view.GetForageDate();
+        //private void GetReportKgPerItem()   //Result<ItemKgStatReport>
+        //{
+        //    var date = view.GetForageDate();
 
-            var byCategory = forageService.GetItemKgStatReport(date);
+        //    var byCategory = forageService.GetItemKgStatReport(date);
 
-            foreach(var itemGroup in byCategory)
-            {
-                Console.WriteLine(itemGroup.Key);
+        //    foreach(var itemGroup in byCategory)
+        //    {
+        //        Console.WriteLine(itemGroup.Key);
 
-                foreach(var item in itemGroup)
-                {
-                    Console.WriteLine($"\t{item.Item.Name} - {item.Kilograms}");
-                }
-            }
+        //        foreach(var item in itemGroup)
+        //        {
+        //            Console.WriteLine($"\t{item.Item.Name} - {item.Kilograms}");
+        //        }
+        //    }
 
-            //return new Result<ItemKgStatReport> { Value = itemKgStatReport};
-        }
+        //    //return new Result<ItemKgStatReport> { Value = itemKgStatReport};
+        //}
 
 
         //REPORT2
         private void GetReportCategoryValue()
         {
-
+            var date = view.GetForageDate();
+            //var byCategory = forageService.GetTotalValueOfEachCategoryInOneDay(date);
         }
 
         private void Generate()

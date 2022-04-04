@@ -49,34 +49,37 @@ namespace SustainableForaging.BLL
             return result;
         }
         //IEnumerable<IGrouping<Category, Forage>>
-        public IEnumerable<IGrouping<Category, Forage>> GetItemKgStatReport(DateTime date)  //List<KgPerItem>
+        //public IEnumerable<IGrouping<Category, Forage>> GetItemKgStatReport(DateTime date)  //List<KgPerItem>
+        //{
+        //    List<Forage> forages = forageRepository.FindByDate(date);
+
+        //    KgPerItem kgPerItem = new KgPerItem();
+        //    List<KgPerItem> result = new List<KgPerItem>();
+
+        //    var byCategory = forages.OrderBy(f => f.Item.Category)
+        //        .ThenBy(f => f.Item.Name)
+        //        .GroupBy(f => f.Item.Category);
+
+        //    var Kg = forages.Where((f, i) => {
+        //        if (f.Item.Category == Category.Edible)
+        //        if (i.Item.Id == 0)
+        //            };
+
+
+        //    //sum equivalent items?
+
+        //    return byCategory;
+        //}
+
+        public Dictionary<Category, decimal> GetTotalValueOfEachCategoryInOneDay(DateTime date)
         {
             List<Forage> forages = forageRepository.FindByDate(date);
+            var totValueByCategory = from forage in forages
+                                     group forage by forage.Item.Category
+                                     into g
+                                     select new { Category = g.Key, TotalValue = g.Sum(f => f.Value) };
 
-            KgPerItem kgPerItem = new KgPerItem();
-            List<KgPerItem> result = new List<KgPerItem>();
-
-            //var itemsKg = forages.Aggregate(new List<Forage>(),
-            //    (current, forage) => current.Concat(forage.Item.Name).ToList());
-
-            //var stats = new KgPerItem
-            //{
-            //    ItemName = itemsKg.
-            //};
-            //foreach(var forage in forages)
-            //{
-            //    kgPerItem.Item = forage.Item.Name;
-            //    result.Add(kgPerItem.Item)
-            //}
-
-
-            var byCategory = forages.OrderBy(f => f.Item.Category)
-                .ThenBy(f => f.Item.Name)
-                .GroupBy(f => f.Item.Category);
-
-            //sum equivalent items?
-
-            return byCategory;
+            return totValueByCategory.ToDictionary(k => k.Category, v => v.TotalValue);
         }
 
         public int Generate(DateTime start, DateTime end, int count)

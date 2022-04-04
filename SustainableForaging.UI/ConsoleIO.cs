@@ -14,6 +14,8 @@ namespace SustainableForaging.UI
             = "[INVALID] Enter a date in MM/dd/yyyy format.";
         private const string INVALID_BOOL
             = "[INVALID] Please enter 'y' or 'n'.";
+        private const string INVALID_COMMA
+            = "[INVALID] Please omit any commas.";
 
         public void Print(string message)
         {
@@ -36,11 +38,17 @@ namespace SustainableForaging.UI
             while(true)
             {
                 string result = ReadString(prompt);
-                if(!string.IsNullOrWhiteSpace(result))
+                
+                if (!string.IsNullOrWhiteSpace(result))
                 {
+                    if (result.Contains(","))
+                    {
+                        PrintLine(INVALID_COMMA);
+                        continue;
+                    }
                     return result;
                 }
-                PrintLine(REQUIRED);
+                PrintLine(REQUIRED);                
             }
         }
 
