@@ -21,6 +21,25 @@ namespace SustainableForaging.BLL.Tests.TestDoubles
             forage.Item = ItemRepositoryDouble.ITEM;
             forage.Kilograms = 1.25M;
             forages.Add(forage);
+
+            var forages = new List<Forage>
+            {
+                new ()
+                {
+                    Date = DateTime.Today,
+                    Forager = ForagerRepositoryDouble.FORAGER2,
+                    Item = ItemRepositoryDouble.ITEM,
+                    Kilograms = 0.2M
+                },
+                new ()
+                {
+                    Date = DateTime.Today,
+                    Forager = ForagerRepositoryDouble.FORAGER3,
+                    Item = ItemRepositoryDouble.ITEM,
+                    Kilograms = 0.5M
+
+                }
+            };
         }
 
         public Forage Add(Forage forage)

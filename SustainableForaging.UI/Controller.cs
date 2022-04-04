@@ -61,13 +61,13 @@ namespace SustainableForaging.UI
                     case MainMenuOption.AddItem:
                         AddItem();
                         break;
-                    case MainMenuOption.ReportKgPerItem:
-                        ReportKgPerItem();
+                    case MainMenuOption.ReportKgPerItem:    
+                        GetReportKgPerItem();
                         //view.DisplayStatus(false, "NOT IMPLEMENTED");
                         view.EnterToContinue();
                         break;
                     case MainMenuOption.ReportCategoryValue:
-                        //ReportCategoryValue();
+                        //GetReportCategoryValue();
                         view.DisplayStatus(false, "NOT IMPLEMENTED");
                         view.EnterToContinue();
                         break;
@@ -165,17 +165,28 @@ namespace SustainableForaging.UI
         }
 
         //REPORT1
-        private void ReportKgPerItem()
+        private void GetReportKgPerItem()   //Result<ItemKgStatReport>
         {
             var date = view.GetForageDate();
 
-            var ItemKgStatReport = forageService.GetItemKgStatReport(date);
-            Console.WriteLine(ItemKgStatReport);
+            var byCategory = forageService.GetItemKgStatReport(date);
+
+            foreach(var itemGroup in byCategory)
+            {
+                Console.WriteLine(itemGroup.Key);
+
+                foreach(var item in itemGroup)
+                {
+                    Console.WriteLine($"\t{item.Item.Name} - {item.Kilograms}");
+                }
+            }
+
+            //return new Result<ItemKgStatReport> { Value = itemKgStatReport};
         }
 
 
         //REPORT2
-        private void ReportCategoryValue()
+        private void GetReportCategoryValue()
         {
 
         }

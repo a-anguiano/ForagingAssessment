@@ -48,13 +48,37 @@ namespace SustainableForaging.BLL
 
             return result;
         }
-        public IEnumerable<IGrouping<Category, Forage>> GetItemKgStatReport(DateTime date)
+        //IEnumerable<IGrouping<Category, Forage>>
+        public List<KgPerItem> GetItemKgStatReport(DateTime date)
         {
             List<Forage> forages = forageRepository.FindByDate(date);
-            var stats = forages.Where(f => f.Date == date).OrderBy(f => f.Item.Category)
-                .ThenBy(f => f.Item.Name)
-                .GroupBy(f => f.Item.Category);
-            return stats;
+
+            //may not need the Where because already found forages by date
+            //.Where(f => f.Date == date)
+            KgPerItem kgPerItem = new KgPerItem();
+            List<KgPerItem> result = new List<KgPerItem>();
+
+            var itemsKg = forages.Aggregate(new List<Forage>(),
+                (current, forage) => current.Concat(forage.Item.Name).ToList());
+
+            var stats = new KgPerItem
+            {
+                ItemName = itemsKg.
+            };
+            //foreach(var forage in forages)
+            //{
+            //    kgPerItem.Item = forage.Item.Name;
+            //    result.Add(kgPerItem.Item)
+            //}
+
+
+            //var byCategory = forages.OrderBy(f => f.Item.Category)
+            //    .ThenBy(f => f.Item.Name)
+            //    .GroupBy(f => f.Item.Category);
+
+            //sum equivalent items?
+
+            return byCategory;
         }
 
         public int Generate(DateTime start, DateTime end, int count)

@@ -2,6 +2,7 @@
 using SustainableForaging.BLL.Tests.TestDoubles;
 using SustainableForaging.Core.Models;
 using System;
+using System.Collections.Generic;
 
 namespace SustainableForaging.BLL.Tests
 {
@@ -11,6 +12,46 @@ namespace SustainableForaging.BLL.Tests
            new ForageRepositoryDouble(),
            new ForagerRepositoryDouble(),
            new ItemRepositoryDouble());
+        
+        public DateTime Date { get; set; }
+        public Forager Forager { get; private set; }
+        public Item Item { get; private set; }
+        public decimal Kilograms { get; private set; }
+
+        //private ForageService _service;
+
+        [SetUp]
+        public void SetUp()
+        {            
+            var forages = new List<Forage>
+            {
+                new()
+                {
+                    Date = DateTime.Today,
+                    Forager = ForagerRepositoryDouble.FORAGER,
+                    Item = ItemRepositoryDouble.ITEM,
+                    Kilograms = 0.5M
+                },
+
+                new ()
+                {
+                    Date = DateTime.Today,
+                    Forager = ForagerRepositoryDouble.FORAGER2,
+                    Item = ItemRepositoryDouble.ITEM,
+                    Kilograms = 0.2M
+                },
+                new ()
+                {
+                    Date = DateTime.Today,
+                    Forager = ForagerRepositoryDouble.FORAGER3,
+                    Item = ItemRepositoryDouble.ITEM,
+                    Kilograms = 0.5M
+
+                }
+            };
+            service = new ForageService(forages);
+
+        }//total kg is 12
 
         [Test]
         public void ShouldAdd()
@@ -78,6 +119,13 @@ namespace SustainableForaging.BLL.Tests
             forageDuplicate.Kilograms = 0.5M;
             Result<Forage> result = service.Add(forageDuplicate);
             Assert.IsFalse(result.Success);
+        }
+
+        [Test]
+        public void GetKgOfEachItemInADay()
+        {
+
+            service.GetItemKgStatReport();
         }
     }
 }

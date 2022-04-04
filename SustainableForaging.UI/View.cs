@@ -254,13 +254,5 @@ namespace SustainableForaging.UI
                 io.PrintLine($"{forager.FirstName} {forager.LastName} in {forager.State}");
             }
         }
-
-        //public void DisplayItemKgReport(IEnumerable<IGrouping<Category, Forage>> stats)
-        //{
-        //    foreach(IGrouping<Category, Forage> item in stats)
-        //    {
-
-        //    }
-        //}
     }
 }
