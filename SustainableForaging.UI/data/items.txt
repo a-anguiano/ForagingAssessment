@@ -26,3 +26,4 @@ id,name,category,dollars/kilogram
 25,False Hellebore,Poisonous,0.00
 26,Fibercaps,Poisonous,0.00
 27,Black Nightshade,Poisonous,0.00
+28,poison,Poisonous,0.00

@@ -48,28 +48,34 @@ namespace SustainableForaging.BLL
 
             return result;
         }
+
         //IEnumerable<IGrouping<Category, Forage>>
-        //public IEnumerable<IGrouping<Category, Forage>> GetItemKgStatReport(DateTime date)  //List<KgPerItem>
-        //{
-        //    List<Forage> forages = forageRepository.FindByDate(date);
+        //kg of each item collected in one day
+        public IEnumerable<IGrouping<Category, Forage>> GetItemKgStatReport(DateTime date)  //List<KgPerItem>
+        {
+            List<Forage> forages = forageRepository.FindByDate(date);
 
-        //    KgPerItem kgPerItem = new KgPerItem();
-        //    List<KgPerItem> result = new List<KgPerItem>();
+            //KgPerItem kgPerItem = new KgPerItem();
+            //List<KgPerItem> result = new List<KgPerItem>();
+            //var byCategory = 
 
-        //    var byCategory = forages.OrderBy(f => f.Item.Category)
-        //        .ThenBy(f => f.Item.Name)
-        //        .GroupBy(f => f.Item.Category);
+            foreach (var forage in forages)
+            {
+                var kgTotPerItem = forages.Where(fo => fo.Item.Id == 0).Sum(fo => fo.Kilograms);
 
-        //    var Kg = forages.Where((f, i) => {
-        //        if (f.Item.Category == Category.Edible)
-        //        if (i.Item.Id == 0)
-        //            };
+            }
 
+            var foragesOrdered = forages.OrderBy(f => f.Item.Category)
+                .ThenBy(f => f.Item.Name)
+                .GroupBy(f => f.Item.Category);
 
-        //    //sum equivalent items?
+         
 
-        //    return byCategory;
-        //}
+            //byCategory.A
+            //sum equivalent items?
+
+            return foragesOrdered;
+        }
 
         public Dictionary<Category, decimal> GetTotalValueOfEachCategoryInOneDay(DateTime date)
         {

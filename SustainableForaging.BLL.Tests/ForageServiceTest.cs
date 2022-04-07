@@ -86,8 +86,11 @@ namespace SustainableForaging.BLL.Tests
         [Test]
         public void GetTotalValueOfEachCategoryInOneDay_ReturnsToalValueByCategory()
         {
+            //9.99M = dollars per killogram
+            //1.2kg of item
+
             DateTime date = DateTime.Today;
-            var expected = new Dictionary<Category, decimal> { { Category.Edible,  } };
+            var expected = new Dictionary<Category, decimal> { { Category.Edible, 11.988M} };
 
             Dictionary<Category, decimal> actual = service.GetTotalValueOfEachCategoryInOneDay(date);
 
